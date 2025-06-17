@@ -10,7 +10,6 @@ st.write("Upload PDF invoices and rename them based on invoice numbers found ins
 # ✅ File uploader
 uploaded_files = st.file_uploader("Upload PDFs", type="pdf", accept_multiple_files=True)
 
-# ✅ Logic after upload
 if uploaded_files:
     temp_dir = "temp_uploads"
     output_dir = "renamed"
