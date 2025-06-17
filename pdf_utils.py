@@ -9,7 +9,8 @@ def extract_invoice_number(pdf_path):
         text += page.get_text()
     doc.close()
 
-    match = re.search(r"Invoice\s*No\.?\s*[:\-]?\s*(\d{6,}-\d{2,})", text)
+    # NEW: Match 'Invoice No' followed by whitespace and the number
+    match = re.search(r"Invoice\s*No\.?\s+([0-9]{5,}-[0-9]{2,})", text, re.IGNORECASE)
     return match.group(1).strip() if match else None
 
 def rename_pdf_file(original_path, invoice_number, output_dir="renamed"):
